@@ -10,3 +10,10 @@ To solve this issue, we introduce a decentralised method for crowdfunding. The m
 Here, the crowd instead of donating directly to the hands of the manager the fund is given to a smart contract created by the company. Now, to pull the funds from the smart contract the manager would need to take permission from the crowd(kinda like voting) and if 50% of the crowd agrees then only the funds can be withdrawn else it's not possible.
 
 If incase the target(money required) is not met by the deadline the crowd can withdraw their money from the smart contract.
+
+## Tech Stack used:
+Next.Js
+NextUI
+Solidity
+Web3.js
+Typescript
