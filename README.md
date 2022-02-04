@@ -17,3 +17,13 @@ NextUI
 Solidity
 Web3.js
 Typescript
+Tailwind Css
+
+## Tools used:
+Trello
+Miro Board
+Github
+Git
+Vercel
+Alchemy
+Vs Code
