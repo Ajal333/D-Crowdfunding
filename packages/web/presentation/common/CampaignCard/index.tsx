@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "../Button";
 
 interface Props {
@@ -17,9 +18,13 @@ const CampaignCard = ({ title, description }: Props) => {
       <div className="p-[30px]">
         <h4 className="text-[18px] font-semibold">{title}</h4>
         <p className="my-[16px]">{description}</p>
-        <Button className="text-[14px] font-semibold py-[8px] px-[18px]">
-          View Details
-        </Button>
+        <Link href="/campaign/id">
+          <a>
+            <Button className="text-[14px] font-semibold py-[8px] px-[18px]">
+              View Details
+            </Button>
+          </a>
+        </Link>
       </div>
     </div>
   );
