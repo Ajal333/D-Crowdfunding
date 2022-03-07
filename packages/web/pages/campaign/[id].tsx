@@ -7,6 +7,7 @@ import Layout from "@presentation/Layout";
 const Campaign = () => {
   return (
     <Layout>
+      <title>D-Crowdfunding | Campaign</title>
       <main className=" min-h-[50vh] my-10 ">
         <H2>Camapaign Name</H2>
         <div className="flex my-10">

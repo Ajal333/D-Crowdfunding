@@ -5,6 +5,7 @@ import Layout from "@presentation/Layout";
 const Campaigns = () => {
   return (
     <Layout>
+      <title>D-Crowdfunding | Campaigns</title>
       <H2 className="mt-[50px] mb-[40px]">Campaigns</H2>
       <div className="grid grid-cols-3 gap-[45px]">
         {Array(12)

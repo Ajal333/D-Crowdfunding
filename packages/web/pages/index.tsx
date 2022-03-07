@@ -9,6 +9,7 @@ import Link from "next/link";
 const Home: NextPage = () => {
   return (
     <>
+      <title>D-Crowdfunding</title>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/BG.svg"
