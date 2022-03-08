@@ -4,11 +4,18 @@ import Button from "@presentation/common/Button";
 import CampaignCard from "@presentation/common/CampaignCard";
 import Link from "next/link";
 import { H1, H2 } from "@presentation/common/Typography";
+import HeadMeta from "@presentation/common/HeadMeta";
 
 const Home: NextPage = () => {
   return (
     <>
-      <title>D-Crowdfunding</title>
+      <HeadMeta
+        title="D-Crowdfunding | Know how your donations are spent"
+        description="D-Crowdfuncding is a decentralised platform for crowdfunding"
+        image=""
+        keywords=""
+        url=""
+      />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/BG.svg"

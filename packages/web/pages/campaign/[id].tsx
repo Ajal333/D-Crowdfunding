@@ -1,5 +1,6 @@
 import Button from "@presentation/common/Button";
 
+import HeadMeta from "@presentation/common/HeadMeta";
 import Input from "@presentation/common/Input";
 import { H2, H3, H5, P } from "@presentation/common/Typography";
 import Layout from "@presentation/Layout";
@@ -7,7 +8,13 @@ import Layout from "@presentation/Layout";
 const Campaign = () => {
   return (
     <Layout>
-      <title>D-Crowdfunding | Campaign</title>
+      <HeadMeta
+        title="Campaign | D-Crowdfunding"
+        description="Campaign page"
+        image=""
+        keywords=""
+        url=""
+      />
       <main className=" min-h-[50vh] my-10 ">
         <H2>Camapaign Name</H2>
         <div className="flex my-10">
