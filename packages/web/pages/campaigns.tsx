@@ -1,5 +1,5 @@
 import CampaignCard from "@presentation/common/CampaignCard";
-import H2 from "@presentation/common/H2";
+import { H2 } from "@presentation/common/Typography";
 import Layout from "@presentation/Layout";
 
 const Campaigns = () => {

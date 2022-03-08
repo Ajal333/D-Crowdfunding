@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import Layout from "@presentation/Layout";
 import Button from "@presentation/common/Button";
-import H1 from "@presentation/common/H1";
-import H2 from "@presentation/common/H2";
 import CampaignCard from "@presentation/common/CampaignCard";
 import Link from "next/link";
+import { H1, H2 } from "@presentation/common/Typography";
 
 const Home: NextPage = () => {
   return (
@@ -19,10 +18,8 @@ const Home: NextPage = () => {
       <Layout>
         <div className="min-h-[100vh] flex flex-col items-center justify-center">
           <H1>Know how your donations are spent</H1>
-          <Link href="/campaigns">
-            <a>
-              <Button className="mt-[50px]">View Campaigns</Button>
-            </a>
+          <Link href="/campaigns" passHref>
+            <Button className="mt-[50px]">View Campaigns</Button>
           </Link>
         </div>
         <section className="flex flex-col">
@@ -39,10 +36,8 @@ const Home: NextPage = () => {
               ))}
           </div>
           <div className="flex items-center justify-center mt-[45px]">
-            <Link href="/campaigns">
-              <a>
-                <Button>View all campaigns</Button>
-              </a>
+            <Link href="/campaigns" passHref>
+              <Button>View all campaigns</Button>
             </Link>
           </div>
         </section>
