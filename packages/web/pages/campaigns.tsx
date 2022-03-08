@@ -1,11 +1,18 @@
 import CampaignCard from "@presentation/common/CampaignCard";
 import H2 from "@presentation/common/H2";
+import HeadMeta from "@presentation/common/HeadMeta";
 import Layout from "@presentation/Layout";
 
 const Campaigns = () => {
   return (
     <Layout>
-      <title>D-Crowdfunding | Campaigns</title>
+      <HeadMeta
+        title="Campaigns | D-Crowdfunding"
+        description="List of active campaigns"
+        image=""
+        keywords=""
+        url=""
+      />
       <H2 className="mt-[50px] mb-[40px]">Campaigns</H2>
       <div className="grid grid-cols-3 gap-[45px]">
         {Array(12)
