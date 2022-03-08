@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Checking files before commiting..."
+
+yarn check-format || (
+    echo "Prettier check failed... Run 'yarn format'"
+)
+
+
