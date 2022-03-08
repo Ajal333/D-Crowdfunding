@@ -1,8 +1,29 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [bg, setBg] = useState<string>("");
+
+  useEffect(() => {
+    addEventListener<"scroll">("scroll", handleScroll);
+
+    return () =>
+      removeEventListener<"scroll">("scroll", () => {
+        return;
+      });
+  }, []);
+
+  const handleScroll: EventListener = () => {
+    const top = window.scrollY;
+    // filter backdrop-blur-md border-b-[0.5px] border-[#dadada]
+    if (top > 100) setBg("bg-white");
+    else setBg("");
+  };
+
   return (
-    <div className="fixed top-0 left-0 w-full">
+    <div
+      className={`fixed top-0 left-0 w-full ${bg} transition-all ease-in duration-300`}
+    >
       <div className="flex max-w-[1440px] mx-auto px-[32px] md:px-[64px] lg:px-[120px] py-[16px]">
         <Link href="/" passHref>
           <h2 className="flex flex-1 items-center font-bold cursor-pointer">
