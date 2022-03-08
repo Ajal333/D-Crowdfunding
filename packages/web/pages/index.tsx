@@ -25,8 +25,10 @@ const Home: NextPage = () => {
       <Layout>
         <div className="min-h-[100vh] flex flex-col items-center justify-center">
           <H1>Know how your donations are spent</H1>
-          <Link href="/campaigns" passHref>
-            <Button className="mt-[50px]">View Campaigns</Button>
+          <Link href="/campaigns">
+            <a>
+              <Button className="mt-[50px]">View Campaigns</Button>
+            </a>
           </Link>
         </div>
         <section className="flex flex-col">
@@ -43,8 +45,10 @@ const Home: NextPage = () => {
               ))}
           </div>
           <div className="flex items-center justify-center mt-[45px]">
-            <Link href="/campaigns" passHref>
-              <Button>View all campaigns</Button>
+            <Link href="/campaigns">
+              <a>
+                <Button>View all campaigns</Button>
+              </a>
             </Link>
           </div>
         </section>
