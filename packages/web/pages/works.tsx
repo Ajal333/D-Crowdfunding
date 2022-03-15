@@ -1,6 +1,6 @@
 import HelpCard from "@presentation/common/HelpCard";
 import Layout from "@presentation/Layout";
-import H2 from "@presentation/common/H2";
+import H2 from "@presentation/common/Typography/H2";
 
 const Work = () => {
   return (
