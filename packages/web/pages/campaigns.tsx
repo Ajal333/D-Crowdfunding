@@ -2,8 +2,15 @@ import CampaignCard from "@presentation/common/CampaignCard";
 import { H2 } from "@presentation/common/Typography";
 import HeadMeta from "@presentation/common/HeadMeta";
 import Layout from "@presentation/Layout";
+import { usePosts } from "infrastructure";
 
 const Campaigns = () => {
+  const { data, isLoading, isFetching } = usePosts(10);
+
+  console.log("data :>> ", data);
+  console.log("isLoading :>> ", isLoading);
+  console.log("isFetching :>> ", isFetching);
+
   return (
     <Layout>
       <HeadMeta

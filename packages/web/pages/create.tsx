@@ -1,4 +1,5 @@
 import Button from "@presentation/common/Button";
+import HeadMeta from "@presentation/common/HeadMeta";
 import Input from "@presentation/common/Input";
 import TextArea from "@presentation/common/TextArea";
 import { H2, Label } from "@presentation/common/Typography";
@@ -12,6 +13,13 @@ const Create = () => {
 
   return (
     <Layout>
+      <HeadMeta
+        title="D-Crowdfunding | Know how your donations are spent"
+        description="D-Crowdfuncding is a decentralised platform for crowdfunding"
+        image=""
+        keywords=""
+        url=""
+      />
       <H2 className="mt-[50px]">Create Campaign</H2>
       <form
         className="flex flex-col max-w-[500px] mx-auto mt-[48px]"
