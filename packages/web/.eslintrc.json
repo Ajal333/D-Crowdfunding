@@ -4,6 +4,7 @@
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "react/jsx-key": "off"
+    "react/jsx-key": "off",
+    "@next/next/no-img-element": "off"
   }
 }
