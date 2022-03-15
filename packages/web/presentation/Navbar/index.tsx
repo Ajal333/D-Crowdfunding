@@ -39,7 +39,9 @@ const Navbar = () => {
             <Link href="/works" passHref>
               <li className="cursor-pointer">How it works?</li>
             </Link>
-            <li className="cursor-pointer">Create Campaign</li>
+            <Link href="/create" passHref>
+              <li className="cursor-pointer">Create Campaign</li>
+            </Link>
             <Link href="/campaigns" passHref>
               <li className="cursor-pointer">Active Campagins</li>
             </Link>
