@@ -1,11 +1,18 @@
+import HeadMeta from "@presentation/common/HeadMeta";
 import HelpCard from "@presentation/common/HelpCard";
+import { H2 } from "@presentation/common/Typography";
 import Layout from "@presentation/Layout";
-import H2 from "@presentation/common/H2";
 
 const Work = () => {
   return (
     <Layout>
-      <title>D-Crowdfunding | How it works</title>
+      <HeadMeta
+        title="D-Crowdfunding | Know how your donations are spent"
+        description="D-Crowdfuncding is a decentralised platform for crowdfunding"
+        image=""
+        keywords=""
+        url=""
+      />
       <H2 className="mt-[50px] mb-[40px]">How it works?</H2>
       <div className="grid grid-cols-3 gap-[45px]">
         {Array(3)

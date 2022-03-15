@@ -35,7 +35,10 @@ const Navbar = () => {
             <Link href="/" passHref>
               <li className="cursor-pointer">Home</li>
             </Link>
-            <li className="cursor-pointer">How it works?</li>
+
+            <Link href="/works" passHref>
+              <li className="cursor-pointer">How it works?</li>
+            </Link>
             <li className="cursor-pointer">Create Campaign</li>
             <Link href="/campaigns" passHref>
               <li className="cursor-pointer">Active Campagins</li>
