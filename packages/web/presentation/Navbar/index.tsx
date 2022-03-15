@@ -24,7 +24,7 @@ const Navbar = () => {
     <div
       className={`fixed top-0 left-0 w-full ${bg} transition-all ease-in duration-300`}
     >
-      <div className="flex max-w-[1440px] mx-auto px-[32px] md:px-[64px] lg:px-[120px] py-[16px]">
+      <div className="flex max-w-[1440px] mx-auto px-[32px] md:px-[64px] lg:px-[120px] py-[20px]">
         <Link href="/" passHref>
           <h2 className="flex flex-1 items-center font-bold cursor-pointer">
             D-Crowdfunding
