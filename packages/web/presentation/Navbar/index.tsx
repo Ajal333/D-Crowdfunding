@@ -45,7 +45,9 @@ const Navbar = () => {
             <Link href="/campaigns" passHref>
               <li className="cursor-pointer">Active Campagins</li>
             </Link>
-            <li className="cursor-pointer">Profile</li>
+            <Link href="/profile" passHref>
+              <li className="cursor-pointer">Profile</li>
+            </Link>
           </ul>
         </nav>
       </div>
