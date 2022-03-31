@@ -20,7 +20,8 @@
       "@styles/*": ["styles/*"],
       "@public/*": ["public/*"],
       "@common/*": ["components/*"],
-      "@presentation/*": ["presentation/*"]
+      "@presentation/*": ["presentation/*"],
+      "@infrastructure/*": ["infrastructure/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
