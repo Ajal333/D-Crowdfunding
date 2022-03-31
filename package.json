@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "d-crowdfunding",
+  "version": "1.0.0",
+  "repository": "git@github.com:Ajal333/D-Crowdfunding.git",
+  "author": "Abhinav Rajesh <abhinavrajesh49@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspace @d-crowdfunding/web dev",
+    "build:web": "yarn build web",
+    "start": "yarn workspace @d-crowdfunding/web run start",
+    "prepare": "husky install",
+    "check-types": "yarn workspace @d-crowdfunding/web tsc --pretty --noEmit",
+    "check-format": "yarn workspace @d-crowdfunding/web prettier --check .",
+    "check-lint": "yarn workspace @d-crowdfunding/web eslint . --ext ts --ext tsx --ext js",
+    "format": "yarn workspace @d-crowdfunding/web prettier --write .",
+    "test": "yarn workspace @d-crowdfunding/web jest",
+    "test-all": "yarn check-format && yarn check-lint && yarn check-types"
+  },
+  "devDependencies": {
+    "husky": "^7.0.0"
+  }
+}
