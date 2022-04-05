@@ -14,12 +14,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   const loadBlockchain = async () => {
+    console.log("here");
     const networkId = await web3.eth.net.getId();
+    console.log(networkId);
     if (networkId === 44787) {
-      await web3.eth.Contract(
+      const response = await web3.eth.Contract(
         DCrowdfundingABI,
         "0xd9145CCE52D386f254917e481eB44e9943F39138"
       );
+      console.log(response);
     }
   };
 
