@@ -1,1 +1,1 @@
-export * from "./getPosts";
+export * from "./getWeb3";
