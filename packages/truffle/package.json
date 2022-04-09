@@ -1,0 +1,26 @@
+{
+  "name": "@d-crowdfunding/truffle",
+  "version": "1.0.0",
+  "description": "Smart contracts for DCrowdfunding",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajal333/D-Crowdfunding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ajal333/D-Crowdfunding/issues"
+  },
+  "homepage": "https://github.com/Ajal333/D-Crowdfunding#readme",
+  "dependencies": {
+    "@celo/contractkit": "^1.5.2",
+    "fs": "0.0.1-security"
+  }
+}

@@ -10,7 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   const loadBlockchain = async () => {
+    console.log("here");
     const networkId = await web3.eth.net.getId();
+    console.log(networkId);
     if (networkId === 44787) {
       const response = await web3.eth.Contract(
         DCrowdfundingABI,
