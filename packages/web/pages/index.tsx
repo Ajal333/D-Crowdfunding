@@ -1,12 +1,10 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Layout from "@presentation/Layout";
 import Button from "@presentation/common/Button";
 import CampaignCard from "@presentation/common/CampaignCard";
 import Link from "next/link";
 import { H1, H2 } from "@presentation/common/Typography";
 import HeadMeta from "@presentation/common/HeadMeta";
-import { dehydrate, QueryClient } from "react-query";
-import { getPosts } from "infrastructure";
 
 const Home: NextPage = () => {
   return (
@@ -57,18 +55,6 @@ const Home: NextPage = () => {
       </Layout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["posts", 10], () => getPosts(10));
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 };
 
 export default Home;
