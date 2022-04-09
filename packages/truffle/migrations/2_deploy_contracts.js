@@ -1,5 +1,5 @@
-const DCrowdfunding = artifacts.require("DCrowdfunding");
+const Campaigns = artifacts.require("Campaigns");
 
 module.exports = async function (deployer) {
-  await deployer.deploy(DCrowdfunding);
+  await deployer.deploy(Campaigns);
 };
