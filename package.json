@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "yarn workspace @d-crowdfunding/web dev",
-    "build:web": "yarn build web",
+    "build:web": "yarn workspace @d-crowdfunding/web run build",
     "start": "yarn workspace @d-crowdfunding/web run start",
     "prepare": "husky install",
     "check-types": "yarn workspace @d-crowdfunding/web tsc --pretty --noEmit",

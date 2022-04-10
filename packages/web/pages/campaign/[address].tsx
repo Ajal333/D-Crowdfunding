@@ -40,6 +40,7 @@ const Campaign = () => {
       setCampaignData(campaignData);
     })();
     console.log(router.query.address);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
