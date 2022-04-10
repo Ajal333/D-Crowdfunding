@@ -1,4 +1,4 @@
-import { MetaMaskInpageProvider } from "@metamask/providers";
+import type { MetaMaskInpageProvider } from "@metamask/providers";
 import Web3 from "web3";
 
 declare global {

@@ -1,4 +1,4 @@
-import { MetaMaskInpageProviderOptions } from "@metamask/providers/dist/MetaMaskInpageProvider";
+import type { MetaMaskInpageProviderOptions } from "@metamask/providers/dist/MetaMaskInpageProvider";
 import Web3 from "web3";
 
 let web3: undefined | Web3;
