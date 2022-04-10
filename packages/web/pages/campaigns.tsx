@@ -2,8 +2,18 @@ import CampaignCard from "@presentation/common/CampaignCard";
 import { H2 } from "@presentation/common/Typography";
 import HeadMeta from "@presentation/common/HeadMeta";
 import Layout from "@presentation/Layout";
+import { useEffect } from "react";
+
+import campaigns from "@infrastructure/campaigns";
 
 const Campaigns = () => {
+  useEffect(() => {
+    (async () => {
+      const data = await campaigns.methods.getDeployedCampaigns().call();
+      console.log(data);
+    })();
+  }, []);
+
   return (
     <Layout>
       <HeadMeta

@@ -1,6 +1,14 @@
+import { MetaMaskInpageProviderOptions } from "@metamask/providers/dist/MetaMaskInpageProvider";
 import Web3 from "web3";
 
 let web3: undefined | Web3;
+
+declare global {
+  interface Window {
+    web3: Web3;
+    ethereum: MetaMaskInpageProviderOptions;
+  }
+}
 
 if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
   // we are in the browser and meta mask is installed
@@ -15,5 +23,4 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
   web3 = new Web3(provider);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default web3 as any;
+export default web3;
