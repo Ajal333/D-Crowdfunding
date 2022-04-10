@@ -65,7 +65,7 @@ const Campaign = () => {
                 <Button className="mx-5">Make donation</Button>
               </div>
               <H5 className=" font-medium text-black">
-                *Min-amount is ${campaignData?.minimumContribution} CELO
+                *Min-amount is {campaignData?.minimumContribution} CELO
               </H5>
             </div>
           </div>

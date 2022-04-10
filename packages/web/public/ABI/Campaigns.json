@@ -4956,12 +4956,8 @@
   "ast": {
     "absolutePath": "project:/contracts/Campaigns.sol",
     "exportedSymbols": {
-      "Campaigns": [
-        59
-      ],
-      "CrowdFunding": [
-        463
-      ]
+      "Campaigns": [59],
+      "CrowdFunding": [463]
     },
     "id": 60,
     "license": "MIT",
@@ -4969,15 +4965,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".22",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".22", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:32:0"
       },
@@ -4996,15 +4984,11 @@
       {
         "abstract": false,
         "baseContracts": [],
-        "contractDependencies": [
-          463
-        ],
+        "contractDependencies": [463],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 59,
-        "linearizedBaseContracts": [
-          59
-        ],
+        "linearizedBaseContracts": [59],
         "name": "Campaigns",
         "nameLocation": "105:9:0",
         "nodeType": "ContractDefinition",
@@ -5054,9 +5038,7 @@
               "src": "432:398:0",
               "statements": [
                 {
-                  "assignments": [
-                    23
-                  ],
+                  "assignments": [23],
                   "declarations": [
                     {
                       "constant": false,
