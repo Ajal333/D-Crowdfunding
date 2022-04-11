@@ -11,12 +11,15 @@ import { useEffect, useState } from "react";
 import web3 from "@infrastructure/web3";
 
 import { CampaignType } from "types";
+import { CardSkeleton } from "@presentation/common/Skeletons";
 
 const Home: NextPage = () => {
   const [campaignsData, setCampaignsData] = useState<CampaignType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const campaignAddresses = await campaigns.methods
         .getDeployedCampaigns()
         .call();
@@ -48,6 +51,7 @@ const Home: NextPage = () => {
       });
 
       setCampaignsData(parsedCampaignsData.slice(0, 3));
+      setLoading(false);
     })();
   }, []);
 
@@ -78,15 +82,19 @@ const Home: NextPage = () => {
         <section className="flex flex-col">
           <H2 className="mb-[50px]">Latest Campaign</H2>
           <div className="grid grid-cols-3 gap-[45px]">
-            {campaignsData.map((campaign) => (
-              <CampaignCard
-                title={campaign.name}
-                description={campaign.description}
-                address={campaign.address}
-                image={campaign.image}
-                key={campaign.address}
-              />
-            ))}
+            {loading
+              ? Array(3)
+                  .fill(null)
+                  .map((_, i) => <CardSkeleton key={i} />)
+              : campaignsData.map((campaign) => (
+                  <CampaignCard
+                    title={campaign.name}
+                    description={campaign.description}
+                    address={campaign.address}
+                    image={campaign.image}
+                    key={campaign.address}
+                  />
+                ))}
           </div>
           <div className="flex items-center justify-center mt-[45px]">
             <Link href="/campaigns">
