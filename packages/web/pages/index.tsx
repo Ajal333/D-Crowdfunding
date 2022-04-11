@@ -48,7 +48,6 @@ const Home: NextPage = () => {
       });
 
       setCampaignsData(parsedCampaignsData.slice(0, 3));
-      console.log(campaignsData);
     })();
   }, []);
 
