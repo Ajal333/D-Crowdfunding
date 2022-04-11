@@ -67,14 +67,12 @@ const Create = () => {
         const imageUrl = `https://ipfs.infura.io/ipfs/${image.path}`;
         console.log(imageUrl);
         const referenceDate = new Date(deadline).getTime();
-        const diffTime: number = Math.abs(referenceDate - new Date().getTime());
-        const offsetDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         const data = await campaigns.methods
           .createCampaign(
             web3.utils.toWei(minContribution, "ether"),
             web3.utils.toWei(target, "ether"),
-            offsetDays,
+            referenceDate,
             name,
             description,
             imageUrl

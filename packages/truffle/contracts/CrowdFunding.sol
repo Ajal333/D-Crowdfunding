@@ -34,7 +34,7 @@ contract CrowdFunding {
         string memory _campaignImage
     ) {
         target = _target;
-        deadline = block.timestamp + _deadline;
+        deadline = _deadline;
         minimumContribution = _minimumContribution;
         organization = _organization;
         campaignName = _campaginName;

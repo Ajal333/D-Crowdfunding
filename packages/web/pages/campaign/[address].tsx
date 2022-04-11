@@ -31,10 +31,31 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
       />
       <main className="min-h-[50vh] my-10 ">
         <H2>{campaignData?.name}</H2>
-        <div className="flex">
-          <div className="flex flex-col my-10">
-            <P>{campaignData?.description}</P>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+        <div className="flex mt-10">
+          <div className="flex flex-col mb-10">
+            <H5 className="font-bold">Description</H5>
+            <P className="!w-full mb-[20px]">{campaignData?.description}</P>
+            <H5 className="font-bold">Campaign expires on</H5>
+            <P className="!w-full mb-[20px]">
+              {new Date(parseInt(campaignData?.deadline)).toLocaleDateString()}
+            </P>
+            <H5 className="font-bold">Requests</H5>
+            <P className="!w-full mb-[20px]">{campaignData.numberOfRequests}</P>
+            <H5 className="font-bold">Organization Address</H5>
+            <P className="!w-full mb-[20px]">
+              {campaignData.organizationAddress}
+            </P>
+            <H5 className="font-bold">Contract Address</H5>
+            <a
+              className="!w-full mb-[20px] text-blue-500 font-bold"
+              href={`https://alfajores-blockscout.celo-testnet.org/address/${campaignData.address}/transactions`}
+            >
+              {campaignData.address}
+            </a>
+            <H5 className="font-bold">Amount raised</H5>
+            <P className="!w-full mb-[20px]">
+              {campaignData.totalDonated}/{campaignData.targetAmount} CELO
+            </P>
             <div className=" my-10">
               <H3>Payment for the campaign</H3>
               <div className="flex my-6">
@@ -46,11 +67,13 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
               </H5>
             </div>
           </div>
-          <img
-            src={campaignData?.image}
-            alt={`Image of campaign - ${campaignData?.name}`}
-            className="rounded-[6px] w-2/5  object-cover object-center"
-          />
+          <div className="flex items-center justify-center w-full">
+            <img
+              src={campaignData?.image}
+              alt={`Image of campaign - ${campaignData?.name}`}
+              className="rounded-[6px] object-cover object-center"
+            />
+          </div>
         </div>
       </main>
     </Layout>
