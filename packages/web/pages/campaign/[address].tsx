@@ -11,6 +11,7 @@ import web3 from "@infrastructure/web3";
 import { CampaignType } from "types";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useToast } from "@chakra-ui/react";
 
 interface Props {
   campaignData: CampaignType | null;
@@ -24,7 +25,12 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   const [amount, setAmount] = useState<string>(
     campaignData?.minimumContribution?.toString() ?? "0"
   );
+  const [donationProgressing, setDonationProgressing] =
+    useState<boolean>(false);
+
   const router = useRouter();
+
+  const toast = useToast();
 
   useEffect(() => {
     (async () => {
@@ -39,15 +45,38 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   }, []);
 
   const makeDonation = async () => {
+    setDonationProgressing(true);
     try {
       const campaign = CrowdFunding(router?.query?.address as string);
       const accounts = await web3.eth.getAccounts();
 
-      await campaign.methods.sendEth().send({
+      const response = await campaign.methods.sendEth().send({
         from: accounts[0],
         value: web3.utils.toWei(amount, "ether"),
       });
-    } catch (error) {}
+
+      response?.status &&
+        toast({
+          title: "Donation Success.",
+          description: "Donation is successfully completed.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
+    } catch (error) {
+      console.log("error :>> ", error);
+      toast({
+        title: "Donation Failed.",
+        description: "Could not make the donation at the moment.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    } finally {
+      setDonationProgressing(false);
+    }
   };
 
   return (
@@ -109,6 +138,8 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
                   <Button
                     className="md:ml-2 mt-2 md:mt-0 w-full md:w-auto"
                     onClick={makeDonation}
+                    isLoading={donationProgressing}
+                    loadingText="Donating..."
                   >
                     Make donation
                   </Button>

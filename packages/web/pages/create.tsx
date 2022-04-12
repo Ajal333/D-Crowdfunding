@@ -20,6 +20,8 @@ const Create = () => {
   const [minContribution, setMinContribution] = useState<string>("");
   const [deadline, setDeadline] = useState<string>("");
 
+  const [creatingCampaign, setCreatingCampaign] = useState<boolean>(false);
+
   const [errors, setErrors] = useState<string[]>([]);
   const toast = useToast();
 
@@ -49,6 +51,7 @@ const Create = () => {
   };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    setCreatingCampaign(true);
     try {
       e.preventDefault();
       setErrors([]);
@@ -87,10 +90,21 @@ const Create = () => {
           status: "success",
           duration: 9000,
           isClosable: true,
+          position: "top",
         });
       }
     } catch (err) {
       console.log(err);
+      toast({
+        title: "Campaign Creation Error",
+        description: `Your request to create a campaign named ${name} could not be processed at the moment.`,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    } finally {
+      setCreatingCampaign(false);
     }
   };
 
@@ -179,7 +193,13 @@ const Create = () => {
           accept="image/jpeg, image/png"
           required
         />
-        <Button type="submit">Create Campaign</Button>
+        <Button
+          loadingText="Creating campaign"
+          isLoading={creatingCampaign}
+          type="submit"
+        >
+          Create Campaign
+        </Button>
       </form>
     </Layout>
   );

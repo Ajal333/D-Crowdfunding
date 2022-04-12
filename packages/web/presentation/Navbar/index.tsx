@@ -47,9 +47,9 @@ const Navbar = () => {
               <Link href="/campaigns" passHref>
                 <li className="cursor-pointer">Active Campagins</li>
               </Link>
-              <Link href="/profile" passHref>
+              {/* <Link href="/profile" passHref>
                 <li className="cursor-pointer">Profile</li>
-              </Link>
+              </Link> */}
             </ul>
             <div
               className="flex z-100 lg:hidden flex-col items-center justify-end"
@@ -125,7 +125,7 @@ const Navbar = () => {
               Active Campagins
             </li>
           </Link>
-          <Link href="/profile" passHref>
+          {/* <Link href="/profile" passHref>
             <li
               className={`tex60 font-semibold ${
                 !navbarExpanded && "opacity-0"
@@ -133,7 +133,7 @@ const Navbar = () => {
             >
               Profile
             </li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
     </>

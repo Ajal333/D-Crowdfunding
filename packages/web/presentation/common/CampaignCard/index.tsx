@@ -8,6 +8,7 @@ interface Props {
   organization?: string;
   raisedAmount?: number;
   targetAmount?: number;
+  description?: string;
   maticPrice?: number | null;
 }
 
@@ -54,10 +55,10 @@ const CampaignCard = ({
                   `($${getMaticPriceInUSD(targetAmount, maticPrice)})`}
               </span>
             </p>
-            <div className="h-[10px] w-full bg-gray-200">
+            <div className="h-[10px] mt-4 w-full bg-gray-200">
               <div
                 className="h-full bg-[#31CF41]"
-                style={{ width: (raisedAmount * 100) / targetAmount }}
+                style={{ width: `${(raisedAmount * 100) / targetAmount}%` }}
               ></div>
             </div>
           </div>
