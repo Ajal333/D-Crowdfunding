@@ -56,7 +56,7 @@ const Navbar = () => {
               </Link> */}
               {account ? (
                 <button
-                  className="cursor-pointer w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
+                  className="cursor-pointer text-white w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
                   onMouseEnter={() => setAccountText("Logout")}
                   onMouseLeave={() =>
                     setAccountText(
@@ -70,7 +70,7 @@ const Navbar = () => {
                 </button>
               ) : (
                 <button
-                  className="cursor-pointer w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
+                  className="cursor-pointer text-white w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
                   onClick={connectWallet}
                 >
                   Connect Wallet
