@@ -92,7 +92,6 @@ const Home: NextPage = () => {
               : campaignsData.map((campaign) => (
                   <CampaignCard
                     title={campaign.name}
-                    description={campaign.description}
                     address={campaign.address}
                     image={campaign.image}
                     organization={campaign.organizationAddress}

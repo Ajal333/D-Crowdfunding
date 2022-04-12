@@ -1,10 +1,8 @@
 import { getMaticPriceInUSD } from "@infrastructure/getMaticToUSD";
 import Link from "next/link";
-import Button from "../Button";
 
 interface Props {
   title: string;
-  description: string;
   address?: string;
   image?: string;
   organization?: string;
@@ -15,7 +13,6 @@ interface Props {
 
 const CampaignCard = ({
   title,
-  description,
   address,
   image,
   organization,

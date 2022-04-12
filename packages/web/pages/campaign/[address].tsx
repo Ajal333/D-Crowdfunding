@@ -35,6 +35,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
       }
       setLoading(false);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const makeDonation = async () => {
