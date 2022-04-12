@@ -25,7 +25,7 @@ const CampaignCard = ({
     <Link href={`/campaign/${address}`}>
       <a className="flex flex-col items-start bg-white border border-[#BEBEBE] rounded-[6px] transition-all duration-300 ease-in-out hover:translate-y-[-30px] hover:shadow-lg">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <div className="bg-black w-full">
+        <div className="bg-black rounded-t-[6px] w-full">
           <img
             src={image}
             alt={title}

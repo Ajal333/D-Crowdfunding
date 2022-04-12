@@ -23,6 +23,7 @@ const Create = () => {
   const [creatingCampaign, setCreatingCampaign] = useState<boolean>(false);
 
   const [errors, setErrors] = useState<string[]>([]);
+
   const toast = useToast();
 
   const inputValidation = (e: FormEvent<HTMLFormElement>): string[] => {
