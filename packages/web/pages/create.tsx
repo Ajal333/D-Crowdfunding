@@ -19,8 +19,8 @@ const Create = () => {
   const [target, setTarget] = useState<string>("");
   const [minContribution, setMinContribution] = useState<string>("");
   const [deadline, setDeadline] = useState<string>("");
-
   const [errors, setErrors] = useState<string[]>([]);
+
   const toast = useToast();
 
   const inputValidation = (e: FormEvent<HTMLFormElement>): string[] => {
@@ -180,6 +180,14 @@ const Create = () => {
           required
         />
         <Button type="submit">Create Campaign</Button>
+        {/* <Stack spacing={3}>
+            <Button onClick={() => wallet.connect()}>Connect Wallet </Button>
+            <Alert
+              className=""
+              status="warning"
+              text="Please connect your wallet to create a campaign"
+            />
+          </Stack> */}
       </form>
     </Layout>
   );

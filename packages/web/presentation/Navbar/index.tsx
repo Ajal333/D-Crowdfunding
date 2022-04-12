@@ -1,9 +1,13 @@
+import useWeb3Provider from "context/Web3Provider";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [bg, setBg] = useState<string>("");
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false);
+  const [accountText, setAccountText] = useState<string>();
+
+  const { connectWallet, account, disconnectWallet } = useWeb3Provider();
 
   useEffect(() => {
     addEventListener<"scroll">("scroll", handleScroll);
@@ -32,7 +36,7 @@ const Navbar = () => {
               D-Crowdfunding
             </h2>
           </Link>
-          <nav className="flex-1 flex items-center justify-end lg:justify-center">
+          <nav className="flex-[2] flex items-center justify-end lg:justify-center">
             <ul className="hidden w-full lg:flex items-center justify-around">
               <Link href="/" passHref>
                 <li className="cursor-pointer">Home</li>
@@ -47,9 +51,31 @@ const Navbar = () => {
               <Link href="/campaigns" passHref>
                 <li className="cursor-pointer">Active Campagins</li>
               </Link>
-              <Link href="/profile" passHref>
+              {/* <Link href="/profile" passHref>
                 <li className="cursor-pointer">Profile</li>
-              </Link>
+              </Link> */}
+              {account ? (
+                <button
+                  className="cursor-pointer w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
+                  onMouseEnter={() => setAccountText("Logout")}
+                  onMouseLeave={() =>
+                    setAccountText(
+                      `${account.slice(0, 5)}...${account.slice(-5)}`
+                    )
+                  }
+                  onClick={disconnectWallet}
+                >
+                  {accountText ??
+                    `${account.slice(0, 5)}...${account.slice(-5)}`}
+                </button>
+              ) : (
+                <button
+                  className="cursor-pointer w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
+                  onClick={connectWallet}
+                >
+                  Connect Wallet
+                </button>
+              )}
             </ul>
             <div
               className="flex z-100 lg:hidden flex-col items-center justify-end"
