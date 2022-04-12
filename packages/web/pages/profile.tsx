@@ -30,7 +30,7 @@ const Prof = () => {
       </section>
       <section className="flex flex-col">
         <H3 className="font-bold mt-[50px] mb-[50px]">Created Campaigns</H3>
-        <div className="grid grid-cols-3 gap-[45px]">
+        <div className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-3 gap-[45px]">
           {Array(3)
             .fill(null)
             .map((_, idx) => (
@@ -51,7 +51,7 @@ const Prof = () => {
       </section>
       <section className="flex flex-col">
         <H3 className="font-bold mt-[50px] mb-[50px]">Donated Campaigns</H3>
-        <div className="grid grid-cols-3 gap-[45px]">
+        <div className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-3 gap-[45px]">
           {Array(3)
             .fill(null)
             .map((_, idx) => (

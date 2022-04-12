@@ -69,7 +69,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
       ) : (
         <main className="min-h-[50vh] my-10 ">
           <H2>{data?.name}</H2>
-          <div className="flex mt-10">
+          <div className="flex flex-col-reverse md:flex-row mt-10">
             <div className="flex flex-1 flex-col mb-10">
               <H5 className="font-bold">Description</H5>
               <P className="!w-full mb-[20px]">{data?.description}</P>
@@ -97,16 +97,19 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
               </P>
               <div className=" my-10">
                 <H3>Payment for the campaign</H3>
-                <div className="flex items-center my-6">
+                <div className="flex flex-col md:flex-row items-center mt-6 mb-2">
                   <Input
                     type="number"
                     step={1}
                     placeholder="Enter the donation amount"
-                    className="flex-1"
+                    className="flex-1 w-full md:w-auto"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                   />
-                  <Button className="ml-2" onClick={makeDonation}>
+                  <Button
+                    className="md:ml-2 mt-2 md:mt-0 w-full md:w-auto"
+                    onClick={makeDonation}
+                  >
                     Make donation
                   </Button>
                 </div>

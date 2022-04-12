@@ -33,11 +33,6 @@ const CampaignCard = ({
         </div>
         <div className="p-[30px] w-full">
           <h4 className="text-[20px] font-semibold">{title}</h4>
-          {/* <p className="my-[10px]">
-          {description.length > 70
-            ? `${description.slice(0, 67)}...`
-            : description}
-        </p> */}
           <p>
             by{" "}
             <span className="font-bold">
