@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Ajal333/D-Crowdfunding#readme",
   "dependencies": {
     "@celo/contractkit": "^1.5.2",
+    "@truffle/hdwallet-provider": "^2.0.5",
+    "dotenv": "^16.0.0",
     "fs": "0.0.1-security"
   }
 }

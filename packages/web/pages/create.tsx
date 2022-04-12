@@ -34,7 +34,7 @@ const Create = () => {
     if (!/^\d+$/.test(target)) {
       errors.push("Target amount should be number");
     }
-    if (!/^\d+$/.test(minContribution)) {
+    if (!/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(minContribution)) {
       errors.push("Minimum Contribution should be number");
     }
     if (!e?.target?.[5]?.files?.[0]) {

@@ -1,12 +1,6 @@
-const Kit = require("@celo/contractkit");
-const kit = Kit.newKit("https://alfajores-forno.celo-testnet.org");
-const getAccount = require("./getAccount").getAccount;
-
-async function awaitWrapper() {
-  let account = await getAccount();
-  kit.connection.addAccount(account.privateKey);
-}
-awaitWrapper();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const fs = require("fs");
+const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
   networks: {
@@ -15,10 +9,16 @@ module.exports = {
       port: 8545,
       network_id: "*",
     },
-    alfajores: {
-      provider: kit.connection.web3.currentProvider,
-      network_id: 44787,
-      gas: 4000000,
+    matic: {
+      provider: () =>
+        new HDWalletProvider(
+          mnemonic,
+          "https://matic-mumbai.chainstacklabs.com/"
+        ),
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
     },
   },
 

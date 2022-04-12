@@ -13,6 +13,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@metamask/providers": "^8.1.1",
+    "fetch": "^1.1.0",
     "framer-motion": "^6",
     "ipfs-http-client": "55.0.0",
     "next": "12.1.0",

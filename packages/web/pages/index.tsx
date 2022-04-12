@@ -12,10 +12,12 @@ import web3 from "@infrastructure/web3";
 
 import { CampaignType } from "types";
 import { CardSkeleton } from "@presentation/common/Skeletons";
+import { getMaticPrice } from "@infrastructure/getMaticToUSD";
 
 const Home: NextPage = () => {
   const [campaignsData, setCampaignsData] = useState<CampaignType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [maticPrice, setMaticPrice] = useState<number | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -30,7 +32,8 @@ const Home: NextPage = () => {
           CrowdFunding(campaignAddresses[id]).methods.getSummary().call()
         )
       );
-
+      const maticPriceInUSD = await getMaticPrice();
+      setMaticPrice(maticPriceInUSD);
       const parsedCampaignsData: CampaignType[] = [];
 
       campaignsData.forEach((campaign: string, i: number) => {
@@ -92,6 +95,10 @@ const Home: NextPage = () => {
                     description={campaign.description}
                     address={campaign.address}
                     image={campaign.image}
+                    organization={campaign.organizationAddress}
+                    raisedAmount={campaign.totalDonated}
+                    targetAmount={campaign.targetAmount}
+                    maticPrice={maticPrice}
                     key={campaign.address}
                   />
                 ))}

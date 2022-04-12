@@ -4,7 +4,7 @@ import Campaigns from "@public/ABI/Campaigns.json";
 
 const instance = new web3.eth.Contract(
   Campaigns.abi as AbiItem[],
-  Campaigns.networks[44787].address
+  Campaigns.networks[80001].address
 );
 
 export default instance;

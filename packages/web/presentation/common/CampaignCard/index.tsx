@@ -1,3 +1,4 @@
+import { getMaticPriceInUSD } from "@infrastructure/getMaticToUSD";
 import Link from "next/link";
 import Button from "../Button";
 
@@ -6,33 +7,71 @@ interface Props {
   description: string;
   address?: string;
   image?: string;
+  organization?: string;
+  raisedAmount?: number;
+  targetAmount?: number;
+  maticPrice?: number | null;
 }
 
-const CampaignCard = ({ title, description, address, image }: Props) => {
+const CampaignCard = ({
+  title,
+  description,
+  address,
+  image,
+  organization,
+  raisedAmount,
+  targetAmount,
+  maticPrice,
+}: Props) => {
   return (
-    <div className="flex flex-col items-start bg-white border border-[#BEBEBE] rounded-[6px]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={image}
-        alt={title}
-        className="h-[160px] w-full object-cover object-center rounded-t-[6px]"
-      />
-      <div className="p-[30px]">
-        <h4 className="text-[18px] font-semibold">{title}</h4>
-        <p className="my-[16px]">
+    <Link href={`/campaign/${address}`}>
+      <a className="flex flex-col items-start bg-white border border-[#BEBEBE] rounded-[6px] transition-all duration-300 ease-in-out hover:translate-y-[-30px] hover:shadow-lg">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <div className="bg-black w-full">
+          <img
+            src={image}
+            alt={title}
+            className="h-[230px] w-full object-cover object-center rounded-t-[6px]"
+          />
+        </div>
+        <div className="p-[30px] w-full">
+          <h4 className="text-[20px] font-semibold">{title}</h4>
+          {/* <p className="my-[10px]">
           {description.length > 70
             ? `${description.slice(0, 67)}...`
             : description}
-        </p>
-        <Link href={`/campaign/${address}`}>
-          <a>
-            <Button className="text-[14px] font-semibold py-[8px] px-[18px]">
-              View Details
-            </Button>
-          </a>
-        </Link>
-      </div>
-    </div>
+        </p> */}
+          <p>
+            by{" "}
+            <span className="font-bold">
+              {organization?.slice(0, 8)}...{organization?.slice(-8)}
+            </span>
+          </p>
+          <h5 className="mt-[20px] text-[20px] font-semibold">
+            {raisedAmount} MATIC{" "}
+            <span className="font-normal text-gray-600">
+              {maticPrice !== null &&
+                `($${getMaticPriceInUSD(raisedAmount, maticPrice)})`}
+            </span>
+          </h5>
+          <div className="w-full">
+            <p>
+              target of {targetAmount} MATIC{" "}
+              <span className="font-normal text-gray-600">
+                {maticPrice !== null &&
+                  `($${getMaticPriceInUSD(targetAmount, maticPrice)})`}
+              </span>
+            </p>
+            <div className="h-[10px] w-full bg-gray-200">
+              <div
+                className="h-full bg-[#31CF41]"
+                style={{ width: (raisedAmount * 100) / targetAmount }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };
 
