@@ -81,7 +81,7 @@ const Home: NextPage = () => {
         </div>
         <section className="flex flex-col">
           <H2 className="mb-[50px]">Latest Campaign</H2>
-          <div className="grid grid-cols-3 gap-[45px]">
+          <div className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-3 gap-[45px]">
             {loading
               ? Array(3)
                   .fill(null)

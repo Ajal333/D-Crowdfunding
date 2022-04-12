@@ -10,7 +10,7 @@ interface Props {
 
 const CampaignCard = ({ title, description, address, image }: Props) => {
   return (
-    <div className="flex flex-col items-start bg-white border border-[#BEBEBE] rounded-[6px]">
+    <div className="flex flex-col max-w-[336px] items-start bg-white border border-[#BEBEBE] rounded-[6px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={image}

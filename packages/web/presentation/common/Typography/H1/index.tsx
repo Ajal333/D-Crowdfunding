@@ -6,7 +6,7 @@ const H1 = (
 ) => {
   return (
     <h1
-      className={`leading-[74px] font-black text-[72px] text-center lg:max-w-[780px] mx-auto ${props.className}`}
+      className={`leading-[50px] md:leading-[74px] font-black text-[50px] md:text-[72px] text-center lg:max-w-[780px] mx-auto ${props.className}`}
     >
       {props.children}
     </h1>

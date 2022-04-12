@@ -31,7 +31,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
       />
       <main className="min-h-[50vh] my-10 ">
         <H2>{campaignData?.name}</H2>
-        <div className="flex mt-10">
+        <div className="flex flex-col-reverse md:flex-row mt-10">
           <div className="flex flex-col mb-10">
             <H5 className="font-bold">Description</H5>
             <P className="!w-full mb-[20px]">{campaignData?.description}</P>
@@ -58,9 +58,9 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
             </P>
             <div className=" my-10">
               <H3>Payment for the campaign</H3>
-              <div className="flex my-6">
+              <div className="flex flex-col md:flex-row my-6">
                 <Input type="text" placeholder="Enter the donation amount" />
-                <Button className="mx-5">Make donation</Button>
+                <Button className="my-5 md:mx-5 md:my-0">Make donation</Button>
               </div>
               <H5 className=" font-medium text-black">
                 *Min-amount is {campaignData?.minimumContribution} CELO
@@ -71,7 +71,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
             <img
               src={campaignData?.image}
               alt={`Image of campaign - ${campaignData?.name}`}
-              className="rounded-[6px] object-cover object-center"
+              className="rounded-[6px] mb-5 md:mb-0 object-cover object-center"
             />
           </div>
         </div>
