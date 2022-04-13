@@ -41,19 +41,11 @@ export const Web3Provider = ({ children }) => {
     }
   };
 
-  const disconnectWallet = async () => {
-    try {
-      await deactivate();
-    } catch (error) {
-      console.log("Error on disconnnect: ", error);
-    }
-  };
-
   const values = useMemo(
     () => ({
       account,
       connectWallet,
-      disconnectWallet,
+      disconnectWallet: deactivate,
       library,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
