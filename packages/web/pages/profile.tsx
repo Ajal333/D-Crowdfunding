@@ -14,6 +14,7 @@ import CrowdFunding from "@infrastructure/crowdfunding";
 import { CampaignType } from "types";
 import web3 from "@infrastructure/web3";
 import { getMaticPrice } from "@infrastructure/getMaticToUSD";
+import { useRouter } from "next/router";
 
 interface Props {
   campaigns: CampaignType[];
@@ -25,6 +26,7 @@ const Prof = ({ campaigns }: Props) => {
   const [account, setAccount] = useState<string>("");
 
   const generator = new AvatarGenerator();
+  const router = useRouter()
 
   useEffect(() => {
     (async () => {
@@ -39,6 +41,9 @@ const Prof = ({ campaigns }: Props) => {
             parsedCampaigns.push(campaign);
           }
         });
+      } else {
+        alert("Please conenct your wallet using MetaMask to access your profile")
+        return router.push("/");
       }
       setUserCampaigns(parsedCampaigns);
     })();
