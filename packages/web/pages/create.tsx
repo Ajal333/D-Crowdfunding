@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useState } from "react";
+import React, { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import { create } from "ipfs-http-client";
 
 import Alert from "@presentation/common/Alert";
@@ -11,6 +11,7 @@ import Layout from "@presentation/Layout";
 
 import web3 from "@infrastructure/web3";
 import campaigns from "@infrastructure/campaigns";
+import organisations from "@infrastructure/organisation";
 import { useToast } from "@chakra-ui/react";
 
 const Create = () => {
@@ -109,6 +110,32 @@ const Create = () => {
     }
   };
 
+  const checkOrganisationLoggedIn = async () => {
+    try {
+      const account = (await web3.eth.getAccounts())[0]
+      const organisationAddresses: string[] = await organisations.methods.getAllOrganisation().call()
+
+      let loggedIn = false
+
+      organisationAddresses.forEach((address) => {
+        if (address == account) {
+          loggedIn = true
+        }
+      })
+      if (!loggedIn) {
+        // Show the modal to add account
+        alert("Please create an organisation account before creating campaign")
+      }
+      console.log(organisationAddresses)
+    } catch (error) {
+      
+    }
+  }
+  
+  useEffect(() => {
+    checkOrganisationLoggedIn()
+  }, [])
+  
   return (
     <Layout>
       <HeadMeta
