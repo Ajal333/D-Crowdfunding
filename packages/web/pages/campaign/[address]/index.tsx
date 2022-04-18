@@ -28,6 +28,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   );
   const [donationProgressing, setDonationProgressing] =
     useState<boolean>(false);
+  const [account, setAccount] = useState<string>();
 
   const router = useRouter();
 
@@ -40,6 +41,8 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
         const response = await fetchData(router.query?.address as string);
         setData(response);
       }
+      const accounts = await web3.eth.getAccounts();
+      setAccount(accounts[0]);
       setLoading(false);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,8 +110,6 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
               <P className="!w-full mb-[20px]">
                 {new Date(parseInt(data?.deadline)).toLocaleDateString()}
               </P>
-              <H5 className="font-bold">Requests</H5>
-              <P className="!w-full mb-[20px]">{data?.numberOfRequests}</P>
               <H5 className="font-bold">Organization Address</H5>
               <P className="!w-full mb-[20px]">{data?.organizationAddress}</P>
               <H5 className="font-bold">Contract Address</H5>
@@ -140,31 +141,46 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
                 <span className="font-bold">{data?.numberOfRequests}</span>
               </P>
               <div className=" my-10">
-                <H3>Payment for the campaign</H3>
-                <div className="flex flex-col md:flex-row items-center mt-6 mb-2">
-                  <Input
-                    type="number"
-                    step={1}
-                    placeholder="Enter the donation amount"
-                    className="flex-1 w-full md:w-auto"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                  <Button
-                    className="md:ml-2 mt-2 md:mt-0 w-full md:w-auto"
-                    onClick={makeDonation}
-                    isLoading={donationProgressing}
-                    loadingText="Donating..."
+                <H3>
+                  {account === data?.organizationAddress
+                    ? "Withdraw fund"
+                    : "Payment for the campaign"}
+                </H3>
+                {account === data?.organizationAddress ? (
+                  <a
+                    href={`/campaign/${router?.query?.address}/requests/new`}
+                    className="!w-full text-[18px] text-blue-500 font-bold"
                   >
-                    Make donation
-                  </Button>
-                </div>
-                <H5 className=" font-medium text-black">
-                  *Min-amount is{" "}
-                  <span className="font-bold">
-                    {data?.minimumContribution} {currency}
-                  </span>
-                </H5>
+                    Create Withdraw request
+                  </a>
+                ) : (
+                  <>
+                    <div className="flex flex-col md:flex-row items-center mt-6 mb-2">
+                      <Input
+                        type="number"
+                        step={1}
+                        placeholder="Enter the donation amount"
+                        className="flex-1 w-full md:w-auto"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                      />
+                      <Button
+                        className="md:ml-2 mt-2 md:mt-0 w-full md:w-auto"
+                        onClick={makeDonation}
+                        isLoading={donationProgressing}
+                        loadingText="Donating..."
+                      >
+                        Make donation
+                      </Button>
+                    </div>
+                    <H5 className=" font-medium text-black">
+                      *Min-amount is{" "}
+                      <span className="font-bold">
+                        {data?.minimumContribution} {currency}
+                      </span>
+                    </H5>
+                  </>
+                )}
               </div>
             </div>
             <div className="flex flex-1 items-start justify-center w-full">
