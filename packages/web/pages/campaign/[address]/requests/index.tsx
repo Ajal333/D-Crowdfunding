@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 
 import HeadMeta from "@presentation/common/HeadMeta";
 import { H2, H3 } from "@presentation/common/Typography";
+import Button from "@presentation/common/Button";
 import Layout from "@presentation/Layout";
 
 import CrowdFunding from "@infrastructure/crowdfunding";
 import { getMaticPrice } from "@infrastructure/getMaticToUSD";
+import web3 from "@infrastructure/web3";
 
 interface Props {
   campaignId: string;
@@ -14,6 +16,7 @@ interface Props {
   balance: string;
   name: string;
   maticPrice: string;
+  organisationAddress: string;
 }
 
 interface RequestInterface {
@@ -24,8 +27,13 @@ interface RequestInterface {
   value: string;
 }
 
-export default function Requests({ campaignId, requestCount }: Props) {
+export default function Requests({
+  campaignId,
+  requestCount,
+  organisationAddress,
+}: Props) {
   const [data, setData] = useState<RequestInterface[]>([]);
+  const [account, setAccount] = useState<string>();
 
   useEffect(() => {
     getRequests();
@@ -33,6 +41,8 @@ export default function Requests({ campaignId, requestCount }: Props) {
   }, []);
 
   const getRequests = async () => {
+    const accounts = await web3.eth.getAccounts();
+    setAccount(accounts[0]);
     const campaign = CrowdFunding(campaignId);
     try {
       const response: RequestInterface[] = await Promise.all(
@@ -40,9 +50,31 @@ export default function Requests({ campaignId, requestCount }: Props) {
           .fill(null)
           .map((_, index) => campaign.methods.requests(index).call())
       );
-
       setData(response);
-      console.log("response", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleVote = async (requestId: number) => {
+    try {
+      const campaign = CrowdFunding(campaignId);
+      const response = await campaign.methods.voteRequest(requestId).send({
+        from: account,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const makePayment = async (requestId: number) => {
+    try {
+      const campaign = CrowdFunding(campaignId);
+      const response = await campaign.methods.makePayment(requestId).send({
+        from: account,
+      });
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -60,8 +92,14 @@ export default function Requests({ campaignId, requestCount }: Props) {
         />
         <H2 className="mt-[50px]">Requests</H2>
         <div className="flex flex-col max-w-[500px] mx-auto mt-[48px]">
-          {data?.map((d) => (
-            <H3>{d.description}</H3>
+          {data?.map((d, i) => (
+            <>
+              <H3>{d.description}</H3>
+              <Button onClick={() => handleVote(i)}>Vote</Button>
+              {account === organisationAddress && (
+                <Button onClick={() => makePayment(i)}>Pull funds</Button>
+              )}
+            </>
           ))}
         </div>
       </Layout>
@@ -84,6 +122,7 @@ export const getServerSideProps: GetServerSideProps = async ({
         requestCount: summary[1],
         balance: summary[3],
         name: summary[6],
+        organisationAddress: summary[5],
         maticPrice,
       },
     };

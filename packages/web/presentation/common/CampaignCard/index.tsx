@@ -59,7 +59,13 @@ const CampaignCard = ({
             <div className="h-[10px] mt-4 w-full bg-gray-200">
               <div
                 className="h-full bg-[#31CF41]"
-                style={{ width: `${(raisedAmount * 100) / targetAmount}%` }}
+                style={{
+                  width: `${
+                    raisedAmount > targetAmount
+                      ? "100"
+                      : (raisedAmount * 100) / targetAmount
+                  }%`,
+                }}
               ></div>
             </div>
           </div>
