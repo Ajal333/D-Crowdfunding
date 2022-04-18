@@ -111,7 +111,12 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
                 {new Date(parseInt(data?.deadline)).toLocaleDateString()}
               </P>
               <H5 className="font-bold">Organization Address</H5>
-              <P className="!w-full mb-[20px]">{data?.organizationAddress}</P>
+              <a
+                className="text-blue-500 font-bold"
+                href={`/organisation/${data?.organizationAddress}`}
+              >
+                <P className="!w-full mb-[20px]">{data?.organizationAddress}</P>
+              </a>
               <H5 className="font-bold">Contract Address</H5>
               <a
                 className="!w-full mb-[20px] text-blue-500 font-bold"
