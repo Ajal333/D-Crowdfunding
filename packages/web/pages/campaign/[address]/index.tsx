@@ -12,6 +12,7 @@ import { CampaignType } from "types";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
+import { currency } from "common/constants";
 
 interface Props {
   campaignData: CampaignType | null;
@@ -124,7 +125,19 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
                 <span className="font-bold">
                   {data?.totalDonated}/{data?.targetAmount}
                 </span>{" "}
-                MATIC
+                {currency}
+              </P>
+              <H5 className="font-bold">
+                Requests
+                <a
+                  className="ml-[10px] text-blue-500 font-bold"
+                  href={`/campaign/${router.query?.address}/requests`}
+                >
+                  View all requests
+                </a>
+              </H5>
+              <P className="!w-full mb-[20px]">
+                <span className="font-bold">{data?.numberOfRequests}</span>
               </P>
               <div className=" my-10">
                 <H3>Payment for the campaign</H3>
@@ -149,7 +162,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
                 <H5 className=" font-medium text-black">
                   *Min-amount is{" "}
                   <span className="font-bold">
-                    {data?.minimumContribution} MATIC
+                    {data?.minimumContribution} {currency}
                   </span>
                 </H5>
               </div>

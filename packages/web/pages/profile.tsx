@@ -26,7 +26,7 @@ const Prof = ({ campaigns }: Props) => {
   const [account, setAccount] = useState<string>("");
 
   const generator = new AvatarGenerator();
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     (async () => {
@@ -42,7 +42,9 @@ const Prof = ({ campaigns }: Props) => {
           }
         });
       } else {
-        alert("Please conenct your wallet using MetaMask to access your profile")
+        alert(
+          "Please conenct your wallet using MetaMask to access your profile"
+        );
         return router.push("/");
       }
       setUserCampaigns(parsedCampaigns);

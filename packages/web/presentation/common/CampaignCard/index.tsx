@@ -1,4 +1,5 @@
 import { getMaticPriceInUSD } from "@infrastructure/getMaticToUSD";
+import { currency } from "common/constants";
 import Link from "next/link";
 
 interface Props {
@@ -41,7 +42,7 @@ const CampaignCard = ({
             </span>
           </p>
           <h5 className="mt-[20px] text-[20px] font-semibold">
-            {raisedAmount} MATIC{" "}
+            {raisedAmount} {currency}{" "}
             <span className="font-normal text-gray-600">
               {maticPrice !== null &&
                 `($${getMaticPriceInUSD(raisedAmount, maticPrice)})`}
@@ -49,7 +50,7 @@ const CampaignCard = ({
           </h5>
           <div className="w-full">
             <p>
-              target of {targetAmount} MATIC{" "}
+              target of {targetAmount} {currency}{" "}
               <span className="font-normal text-gray-600">
                 {maticPrice !== null &&
                   `($${getMaticPriceInUSD(targetAmount, maticPrice)})`}

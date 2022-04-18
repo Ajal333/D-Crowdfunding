@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import web3 from "@infrastructure/web3";
+import { chainID } from "common/constants";
 
 export const Web3Context = React.createContext({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -15,7 +16,7 @@ export const Web3Context = React.createContext({
 export const Web3Provider = ({ children }) => {
   const { activate, account, library, deactivate } = useWeb3React();
 
-  const injected = new InjectedConnector({ supportedChainIds: [80001] });
+  const injected = new InjectedConnector({ supportedChainIds: [chainID] });
 
   useEffect(() => {
     connectWallet();
@@ -26,7 +27,8 @@ export const Web3Provider = ({ children }) => {
     try {
       await activate(injected);
       if (account || typeof window.ethereum !== "undefined") {
-        if ((await web3.eth.getChainId()) !== 80001) {
+        console.log(await web3.eth.getChainId());
+        if ((await web3.eth.getChainId()) !== chainID) {
           window.alert("Please change the network to Mumbai Test Network");
         }
       } else {

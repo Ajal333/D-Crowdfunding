@@ -1,9 +1,12 @@
+import { currency } from "common/constants";
 import fetch from "node-fetch";
 
 export const getMaticPrice = async () => {
   try {
     const response = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=matic-network"
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${
+        currency === "CELO" ? "celo" : "matic-network"
+      }`
     );
     const data = await response.json();
     const maticPrice = data[0].current_price;
