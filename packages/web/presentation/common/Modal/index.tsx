@@ -2,7 +2,6 @@ import {
   //   Button,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   //   ModalFooter,
   ModalHeader,
@@ -19,11 +18,10 @@ interface Props {
 
 const CustomModal = ({ title, closeModal, children }: Props) => {
   return (
-    <Modal isOpen={true} onClose={() => closeModal(false)}>
+    <Modal isOpen={true} onClose={() => closeModal(true)}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
-        <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
 
         {/* <ModalFooter>
