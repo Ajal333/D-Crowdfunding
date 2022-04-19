@@ -4956,8 +4956,12 @@
   "ast": {
     "absolutePath": "project:/contracts/Campaigns.sol",
     "exportedSymbols": {
-      "Campaigns": [59],
-      "CrowdFunding": [460]
+      "Campaigns": [
+        59
+      ],
+      "CrowdFunding": [
+        460
+      ]
     },
     "id": 60,
     "license": "MIT",
@@ -4965,7 +4969,15 @@
     "nodes": [
       {
         "id": 1,
-        "literals": ["solidity", ">=", "0.4", ".22", "<", "0.9", ".0"],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
         "nodeType": "PragmaDirective",
         "src": "32:32:0"
       },
@@ -4984,11 +4996,15 @@
       {
         "abstract": false,
         "baseContracts": [],
-        "contractDependencies": [460],
+        "contractDependencies": [
+          460
+        ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 59,
-        "linearizedBaseContracts": [59],
+        "linearizedBaseContracts": [
+          59
+        ],
         "name": "Campaigns",
         "nameLocation": "105:9:0",
         "nodeType": "ContractDefinition",
@@ -5038,7 +5054,9 @@
               "src": "432:398:0",
               "statements": [
                 {
-                  "assignments": [23],
+                  "assignments": [
+                    23
+                  ],
                   "declarations": [
                     {
                       "constant": false,
@@ -5703,8 +5721,8 @@
     "44787": {
       "events": {},
       "links": {},
-      "address": "0x594CD291d78ef3043c13Ff768efF81Ddc624C93f",
-      "transactionHash": "0x5fd5ef7e6563117ea97436546fbe421493705330c14dd1c43e376e9b3fbb4bd2"
+      "address": "0x0A69b17950e30578835F2D49773b522051A3D305",
+      "transactionHash": "0x2c1651c3bcc56692d39f549bb4ab74bf87c6a90ab89422bd99f7f23b1c5ce0ea"
     },
     "80001": {
       "events": {},
@@ -5726,7 +5744,7 @@
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-04-18T16:40:23.824Z",
+  "updatedAt": "2022-04-18T19:38:59.591Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
