@@ -168,7 +168,7 @@ export default function Requests({
                           isLoading={withdrawing}
                           loadingText="Pulling funds..."
                           onClick={() => makePayment(i)}
-                          className="mr-4"
+                          className="mr-4 mb-4"
                           colorScheme="linkedin"
                         >
                           Pull funds
