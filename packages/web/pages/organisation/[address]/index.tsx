@@ -17,6 +17,8 @@ import web3 from "@infrastructure/web3";
 import { getMaticPrice } from "@infrastructure/getMaticToUSD";
 import { useRouter } from "next/router";
 
+import organisation from "@infrastructure/organisation";
+
 interface Props {
   campaigns: CampaignType[];
 }
@@ -25,11 +27,14 @@ const Prof = ({ campaigns }: Props) => {
   const [userCampaigns, setUserCampaigns] = useState<CampaignType[]>([]);
   const [maticPrice, setMaticPrice] = useState<number | null>(null);
   const [account, setAccount] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [accountData, setAccountData] = useState<any>();
 
   const generator = new AvatarGenerator();
   const router = useRouter();
 
   useEffect(() => {
+    fetchProfile();
     (async () => {
       const maticPriceInUSD = await getMaticPrice();
       setMaticPrice(maticPriceInUSD);
@@ -52,6 +57,20 @@ const Prof = ({ campaigns }: Props) => {
     })();
   }, []);
 
+  const fetchProfile = async () => {
+    try {
+      const accounts = await web3.eth.getAccounts();
+      const response = await organisation.methods.getAllOrganisation().call();
+      console.log(accounts, response);
+      response.forEach((org) => {
+        if (org.organisationAddress === accounts[0]) {
+          console.log({ org });
+          setAccountData(org);
+        }
+      });
+    } catch (error) {}
+  };
+
   return (
     <Layout>
       <HeadMeta
@@ -63,26 +82,16 @@ const Prof = ({ campaigns }: Props) => {
       />
       <section className="flex flex-col object-center mt-[60px]">
         <img
-          src={generator.generateRandomAvatar(account)}
+          src={accountData?.imageUrl ?? generator.generateRandomAvatar(account)}
           alt=""
           className="h-[192px] w-[192px] mx-auto"
         />
         <div className="flex flex-col mt-[10px] justify-center items-center gap-[10px]">
           <div className="flex gap-[5px]">
-            <h2 className="font-bold text-lg">{router?.query?.address}</h2>
+            <h2 className="font-bold text-lg">{accountData?.name}</h2>
             <img src="/octicon_verified-16.svg" alt="" />
           </div>
-          <p>johndoe@hellothere.com</p>
-          <div className="grid grid-cols-2 gap-[45px] mt-[10px]">
-            <div className="flex flex-col shadow-lg justify-center items-center p-4">
-              <p>Successful Campaigns</p>
-              <h2 className="font-bold text-3xl">7</h2>
-            </div>
-            <div className="flex flex-col shadow-lg justify-center items-center p-4">
-              <p>Donations Made</p>
-              <h2 className="font-bold text-3xl">$242</h2>
-            </div>
-          </div>
+          <p>{accountData?.websiteUrl}</p>
         </div>
       </section>
       <section className="flex flex-col">

@@ -46,6 +46,7 @@ export default function Requests({
   const [account, setAccount] = useState<string>();
   const [voting, setVoting] = useState<boolean>(false);
   const [withdrawing, setWithdrawing] = useState<boolean>(false);
+  const [numberOfContributors, setNumberOfContributors] = useState<string>();
 
   const toast = useToast();
 
@@ -58,6 +59,8 @@ export default function Requests({
     const accounts = await web3.eth.getAccounts();
     setAccount(accounts[0]);
     const campaign = CrowdFunding(campaignId);
+    const contributors = await campaign.methods.noOfContributors().call();
+    setNumberOfContributors(contributors);
     try {
       const response: RequestInterface[] = await Promise.all(
         Array(parseInt(requestCount))
@@ -77,6 +80,7 @@ export default function Requests({
       const response = await campaign.methods.voteRequest(requestId).send({
         from: account,
       });
+
       console.log(response);
       toast({
         title: "Voting completed.",
@@ -159,17 +163,25 @@ export default function Requests({
                 {data?.map((d, i) => (
                   <Tr>
                     <Td>{d?.description}</Td>
-                    <Td>{d?.recipient}</Td>
-                    <Td>{d?.value}</Td>
-                    <Td>{d?.noOfVoters}</Td>
+                    <Td>
+                      {d?.recipient.slice(0, 5)}...{d?.recipient.slice(-5)}
+                    </Td>
+                    <Td>{web3?.utils?.fromWei(d?.value, "ether")} CELO</Td>
+                    <Td>
+                      {d?.noOfVoters}/{numberOfContributors}
+                    </Td>
                     <Td>
                       {account === organisationAddress && (
                         <Button
                           isLoading={withdrawing}
                           loadingText="Pulling funds..."
                           onClick={() => makePayment(i)}
-                          className="mr-4 mb-4"
+                          className="mb-4 mr-4 !w-[100px]"
                           colorScheme="linkedin"
+                          disabled={
+                            parseInt(d?.noOfVoters) <
+                            parseInt(numberOfContributors) / 2
+                          }
                         >
                           Pull funds
                         </Button>
@@ -179,6 +191,7 @@ export default function Requests({
                         loadingText="Voting..."
                         size="sm"
                         onClick={() => handleVote(i)}
+                        className="mb-4 !w-[100px]"
                       >
                         Vote
                       </Button>
