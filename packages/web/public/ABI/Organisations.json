@@ -5750,9 +5750,7 @@
   "ast": {
     "absolutePath": "project:/contracts/Organisations.sol",
     "exportedSymbols": {
-      "Organisations": [
-        564
-      ]
+      "Organisations": [564]
     },
     "id": 565,
     "license": "MIT",
@@ -5760,15 +5758,7 @@
     "nodes": [
       {
         "id": 495,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".22",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".22", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:32:3"
       },
@@ -5779,9 +5769,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 564,
-        "linearizedBaseContracts": [
-          564
-        ],
+        "linearizedBaseContracts": [564],
         "name": "Organisations",
         "nameLocation": "75:13:3",
         "nodeType": "ContractDefinition",
@@ -5958,9 +5946,7 @@
               "src": "415:291:3",
               "statements": [
                 {
-                  "assignments": [
-                    519
-                  ],
+                  "assignments": [519],
                   "declarations": [
                     {
                       "constant": false,

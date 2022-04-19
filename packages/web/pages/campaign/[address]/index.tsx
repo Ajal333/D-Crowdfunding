@@ -115,7 +115,7 @@ const Campaign: InferGetServerSidePropsType<typeof getServerSideProps> = ({
               <H5 className="font-bold">Contract Address</H5>
               <a
                 className="!w-full mb-[20px] text-blue-500 font-bold"
-                href={`https://mumbai.polygonscan.com/address/${campaignData?.address}`}
+                href={`https://alfajores-blockscout.celo-testnet.org/address/${campaignData?.address}/transactions`}
                 target="_blank"
                 rel="noreferrer"
               >
